@@ -6,11 +6,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test:parallel": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' '**/sync.hook.ts' --parallel  --reporter mochawesome --require mochawesome/register --timeout 30000",
-    "test:parallel:clean": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' '**/sync.hook.ts' --parallel  --reporter mochawesome --require mochawesome/register --timeout 30000 && npm run clean",
-    "test": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' '**/sync.hook.ts' --reporter mochawesome --timeout 30000",
-    "spec:parallel": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*user.spec.ts' --parallel --reporter mochawesome --require mochawesome/register --timeout 30000",
-    "spec": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*user.spec.ts' --reporter mochawesome --timeout 30000"
+    "test:parallel": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --parallel  --reporter mochawesome --require mochawesome/register --timeout 30000",
+    "test:parallel:clean": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --parallel  --reporter mochawesome --require mochawesome/register --timeout 30000 && npm run clean",
+    "test": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --reporter mochawesome --timeout 30000",
+    "spec:parallel": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*bank.spec.ts' --parallel --reporter mochawesome --require mochawesome/register --timeout 30000",
+    "spec": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*bank.spec.ts' --reporter mochawesome --timeout 30000"
   },
   "keywords": [],
   "license": "ISC",
