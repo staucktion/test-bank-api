@@ -1,11 +1,14 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-const envVariables = {
-  baseUrl: process.env.BASE_URL || "http://localhost:8080",
-  preKey: process.env.PRE_KEY || "api-test_",
-  adminEmail: process.env.ADMIN_EMAIL || "admin@hotmail.com",
-  adminPassword: process.env.ADMIN_PASSWORD || "admin",
-};
+class EnvVairables {
+  static baseUrl = process.env.BASE_URL || "http://localhost:8081";
 
-export default envVariables;
+  static preKey = process.env.PRE_KEY || "api-test_";
+
+  static cardNumber = process.env.CARD_NUMBER || "4242424242424242";
+  static cardExpirationDate = process.env.PRE_KEY || "12/25";
+  static cardCvv = process.env.PRE_KEY || "123";
+}
+
+export default EnvVairables;

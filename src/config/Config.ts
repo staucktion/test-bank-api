@@ -1,12 +1,14 @@
-import envVariables from "src/env/EnvVariables";
+import EnvVairables from "src/env/EnvVariables";
 
 class Config {
-  static baseUrl = envVariables.baseUrl;
-  static preKey = envVariables.preKey;
+  static baseUrl = EnvVairables.baseUrl;
 
-  static admin = {
-    email: envVariables.adminEmail,
-    password: envVariables.adminPassword,
+  static preKey = EnvVairables.preKey;
+
+  static card = {
+    number: EnvVairables.cardNumber,
+    expirationDate: EnvVairables.cardExpirationDate,
+    cvv: EnvVairables.cardCvv,
   };
 }
 
