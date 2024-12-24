@@ -1,4 +1,4 @@
-import HealthCheckService from "src/service/health-check/HealthCheckService";
+import HealthCheckService from "src/service/health/HealthCheckService";
 
 const healthCheckService = new HealthCheckService();
 

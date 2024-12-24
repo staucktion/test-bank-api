@@ -1,5 +1,5 @@
 import addContext from "mochawesome/addContext";
-import HealthCheckFacade from "src/facade/heatlh-check/HealthCheckFacade";
+import HealthCheckFacade from "src/facade/health/HealthCheckFacade";
 
 const healthCheckFacade = new HealthCheckFacade();
 
