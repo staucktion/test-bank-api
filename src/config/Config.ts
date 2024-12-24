@@ -6,7 +6,7 @@ class Config {
   static preKey = EnvVairables.preKey;
 
   static card = {
-    number: EnvVairables.cardNumber,
+    cardNumber: EnvVairables.cardNumber,
     expirationDate: EnvVairables.cardExpirationDate,
     cvv: EnvVairables.cardCvv,
   };
