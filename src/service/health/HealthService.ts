@@ -4,7 +4,7 @@ import { AxiosServiceBuilder } from "src/util/AxiosService";
 
 class HealthService {
   private pathPrefix: string;
-  
+
   constructor() {
     this.pathPrefix = "health";
   }
@@ -21,9 +21,14 @@ class HealthService {
         .setMethod(method)
         .build();
       await axiosService.request();
-    } catch (e: any) {
-      const customError = new CustomError("Axios Error", this.constructor.name, "checkServerStatus", e, null);
-      customError.throwError();
+    } catch (error: any) {
+      CustomError.builder()
+        .setErrorType("Axios Error")
+        .setClassName(this.constructor.name)
+        .setMethodName("checkServerStatus")
+        .setError(error)
+        .build()
+        .throwError();
     }
   }
 
@@ -40,9 +45,14 @@ class HealthService {
         .build();
       const response = await axiosService.request();
       return response;
-    } catch (e: any) {
-      const customError = new CustomError("Axios Error", this.constructor.name, "checkInfo", e, null);
-      customError.throwError();
+    } catch (error: any) {
+      CustomError.builder()
+        .setErrorType("Axios Error")
+        .setClassName(this.constructor.name)
+        .setMethodName("checkInfo")
+        .setError(error)
+        .build()
+        .throwError();
     }
   }
 }

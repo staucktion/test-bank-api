@@ -5,10 +5,15 @@ class HealthValidation {
     // check data field
     if (
       response.data.description === undefined ||
-      response.data.modea === undefined
+      response.data.mode === undefined
     ) {
-      const customError = new CustomError("Validation Error", this.constructor.name, "checkInfo", null, "field not exist");
-      customError.throwError();
+      CustomError.builder()
+        .setErrorType("Validation Error")
+        .setClassName(this.constructor.name)
+        .setMethodName("checkInfo")
+        .setMessage("response header is not exist")
+        .build()
+        .throwError();
     }
   }
 }
