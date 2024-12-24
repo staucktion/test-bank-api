@@ -1,6 +1,8 @@
 import HealthService from "src/service/health/HealthService";
+import HealthValidation from "src/validation/health/HealthValidation";
 
 const healthService = new HealthService();
+const healthValidation = new HealthValidation();
 
 class HealthFacade {
   async checkServerStatus() {
@@ -12,14 +14,8 @@ class HealthFacade {
     // perform operation
     const response = await healthService.checkInfo();
 
-
-    // todo check backend tarafında data.data yerine direkt olarak datayı dönmem lazım
-    // check data field
-    if (
-      response.data.data.description === undefined ||
-      response.data.data.name === undefined
-    )
-      throw new Error(`app informations invalid`);
+    // make validation
+    await healthValidation.checkInfo(response);
   }
 }
 

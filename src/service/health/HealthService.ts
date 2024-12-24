@@ -22,8 +22,8 @@ class HealthService {
         .build();
       await axiosService.request();
     } catch (e: any) {
-      const customError = new CustomError("Axios Error", this.constructor.name, "checkServerStatus", e);
-      await customError.throwError();
+      const customError = new CustomError("Axios Error", this.constructor.name, "checkServerStatus", e, null);
+      customError.throwError();
     }
   }
 
@@ -41,8 +41,8 @@ class HealthService {
       const response = await axiosService.request();
       return response;
     } catch (e: any) {
-      const customError = new CustomError("Axios Error", this.constructor.name, "checkInfo", e);
-      await customError.throwError();
+      const customError = new CustomError("Axios Error", this.constructor.name, "checkInfo", e, null);
+      customError.throwError();
     }
   }
 }
