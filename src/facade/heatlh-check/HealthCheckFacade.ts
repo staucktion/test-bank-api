@@ -8,9 +8,10 @@ class HealthCheckFacade {
     await healthCheckService.checkServerStatus();
   }
 
-  async checkAppInformation() {
+  async checkInfo() {
     // perform operation
-    const response = await healthCheckService.checkAppInformation();
+    const response = await healthCheckService.checkInfo();
+
 
     // todo check backend tarafında data.data yerine direkt olarak datayı dönmem lazım
     // check data field

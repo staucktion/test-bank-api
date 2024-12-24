@@ -4,12 +4,12 @@ import { AxiosServiceBuilder } from "src/util/AxiosService";
 class HealthCheckService {
   private prefix: string;
   constructor() {
-    this.prefix = "health-check";
+    this.prefix = "health";
   }
 
   async checkServerStatus() {
     // prepare request
-    const url = `${Config.baseUrl}/api/${this.prefix}`;
+    const url = `${Config.baseUrl}/${this.prefix}`;
     const method = "get";
 
     try {
@@ -20,13 +20,19 @@ class HealthCheckService {
       await axiosService.request();
     } catch (e: any) {
       throw new Error(
-        `${this.constructor.name}.checkServerStatus:: Axios error: ${JSON.stringify(e.response.data, null, 2)}`
+        `${
+          this.constructor.name
+        }.checkServerStatus:: Axios error: ${JSON.stringify(
+          e.response.data,
+          null,
+          2
+        )}`
       );
     }
   }
-  async checkAppInformation() {
+  async checkInfo() {
     // prepare request
-    const url = `${Config.baseUrl}/api/${this.prefix}/info`;
+    const url = `${Config.baseUrl}/${this.prefix}/info`;
     const method = "get";
 
     try {
@@ -38,7 +44,13 @@ class HealthCheckService {
       return response;
     } catch (e: any) {
       throw new Error(
-        `${this.constructor.name}.checkAppInformation:: Axios error: ${JSON.stringify(e.response.data, null, 2)}`
+        `${
+          this.constructor.name
+        }.checkAppInformation:: Axios error: ${JSON.stringify(
+          e.response.data,
+          null,
+          2
+        )}`
       );
     }
   }
