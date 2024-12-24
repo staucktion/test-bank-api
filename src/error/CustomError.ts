@@ -21,7 +21,7 @@ class CustomError {
     let errorMessage = `${this.errorType} -> ${this.className}.${this.methodName}: `;
 
     if (this.error?.response)
-      errorMessage += JSON.stringify(this.error.response.data, null, 2);
+      errorMessage += "Response:\n" + JSON.stringify(this.error.response.data, null, 2);
     else if (this.error?.code) 
       errorMessage += this.error.code;
 

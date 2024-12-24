@@ -1,4 +1,5 @@
 import Config from "src/config/Config";
+import CustomError from "src/error/CustomError";
 import { AxiosServiceBuilder } from "src/util/AxiosService";
 
 class BankService {
@@ -20,16 +21,15 @@ class BankService {
       console.log(response);
 
       return "ahmet";
-    } catch (e: any) {
-      throw new Error(
-        `${
-          this.constructor.name
-        }.getAccountFromCard:: Axios error: ${JSON.stringify(
-          e.response.data,
-          null,
-          2
-        )}`
-      );
+    } catch (error: any) {
+      
+      CustomError.builder()
+        .setErrorType("Axios Error")
+        .setClassName(this.constructor.name)
+        .setMethodName("getAccountFromCard")
+        .setError(error)
+        .build()
+        .throwError();
     }
   }
 }
