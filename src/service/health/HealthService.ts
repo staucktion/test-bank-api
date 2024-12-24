@@ -1,6 +1,6 @@
 import Config from "src/config/Config";
 import CustomError from "src/error/CustomError";
-import { AxiosServiceBuilder } from "src/util/AxiosService";
+import AxiosService from "src/util/AxiosService";
 
 class HealthService {
   private pathPrefix: string;
@@ -16,11 +16,11 @@ class HealthService {
 
     // send request
     try {
-      const axiosService = new AxiosServiceBuilder()
+      await AxiosService.builder()
         .setUrl(url)
         .setMethod(method)
-        .build();
-      await axiosService.request();
+        .build()
+        .request();
     } catch (error: any) {
       CustomError.builder()
         .setErrorType("Axios Error")
@@ -39,11 +39,11 @@ class HealthService {
 
     // send request
     try {
-      const axiosService = new AxiosServiceBuilder()
+      const response = await AxiosService.builder()
         .setUrl(url)
         .setMethod(method)
-        .build();
-      const response = await axiosService.request();
+        .build()
+        .request();
       return response;
     } catch (error: any) {
       CustomError.builder()
