@@ -1,16 +1,17 @@
 import CustomError from "src/error/CustomError";
 
-class HealthValidation {
-  async checkInfo(response: any) {
+class BankValidation {
+  async getAccountFromCard(response: any) {
     // check data field
     if (
-      response?.data?.description === undefined ||
-      response?.data?.mode === undefined
+      response?.data?.balance === undefined ||
+      response?.data?.provision === undefined ||
+      response?.data?.cards === undefined
     ) {
       CustomError.builder()
         .setErrorType("Validation Error")
         .setClassName(this.constructor.name)
-        .setMethodName("checkInfo")
+        .setMethodName("getAccountFromCard")
         .setMessage("response data field is not exist")
         .build()
         .throwError();
@@ -18,4 +19,4 @@ class HealthValidation {
   }
 }
 
-export default HealthValidation;
+export default BankValidation;
