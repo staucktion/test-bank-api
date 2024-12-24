@@ -1,11 +1,17 @@
 class CustomError {
-  private errorType: string;
-  private className: string;
-  private methodName: string;
-  private error: any | null;
-  private message: string;
+  private readonly errorType: string;
+  private readonly className: string;
+  private readonly methodName: string;
+  private readonly error: any;
+  private readonly message: string;
 
-  constructor(errorType: string, className: string, methodName: string, error: Error | null, message: string) {
+  private constructor(
+    errorType: string,
+    className: string,
+    methodName: string,
+    error: Error,
+    message: string
+  ) {
     this.errorType = errorType;
     this.className = className;
     this.methodName = methodName;
@@ -13,65 +19,66 @@ class CustomError {
     this.message = message;
   }
 
-  static builder() {
-    return new CustomErrorBuilder();
+  public static builder() {
+    return new this.Builder();
   }
 
-  throwError() {
+  public throwError() {
     let errorMessage = `${this.errorType} -> ${this.className}.${this.methodName}: `;
 
     if (this.error?.response)
       errorMessage += "Response:\n" + JSON.stringify(this.error.response.data, null, 2);
-    else if (this.error?.code) 
+    else if (this.error?.code)
       errorMessage += this.error.code;
 
     if (this.message) errorMessage += this.message;
 
     throw new Error(errorMessage);
   }
-}
 
-class CustomErrorBuilder {
-  private errorType: string;
-  private className: string;
-  private methodName: string;
-  private error: Error | null;
-  private message: string;
+  // nested builder class
+  private static Builder = class {
+    private errorType: string;
+    private className: string;
+    private methodName: string;
+    private error: Error;
+    private message: string;
 
-  setErrorType(errorType: string): CustomErrorBuilder {
-    this.errorType = errorType;
-    return this;
-  }
+    public setErrorType(errorType: string): this {
+      this.errorType = errorType;
+      return this;
+    }
 
-  setClassName(className: string): CustomErrorBuilder {
-    this.className = className;
-    return this;
-  }
+    public setClassName(className: string): this {
+      this.className = className;
+      return this;
+    }
 
-  setMethodName(methodName: string): CustomErrorBuilder {
-    this.methodName = methodName;
-    return this;
-  }
+    public setMethodName(methodName: string): this {
+      this.methodName = methodName;
+      return this;
+    }
 
-  setError(error: Error | null): CustomErrorBuilder {
-    this.error = error;
-    return this;
-  }
+    public setError(error: Error): this {
+      this.error = error;
+      return this;
+    }
 
-  setMessage(message: string): CustomErrorBuilder {
-    this.message = message;
-    return this;
-  }
+    public setMessage(message: string): this {
+      this.message = message;
+      return this;
+    }
 
-  build(): CustomError {
-    return new CustomError(
-      this.errorType,
-      this.className,
-      this.methodName,
-      this.error,
-      this.message
-    );
-  }
+    public build(): CustomError {
+      return new CustomError(
+        this.errorType,
+        this.className,
+        this.methodName,
+        this.error,
+        this.message
+      );
+    }
+  };
 }
 
 export default CustomError;
