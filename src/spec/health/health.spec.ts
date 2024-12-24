@@ -1,15 +1,15 @@
 import addContext from "mochawesome/addContext";
-import HealthCheckFacade from "src/facade/health/HealthCheckFacade";
+import HealthFacade from "src/facade/health/HealthFacade";
 
-const healthCheckFacade = new HealthCheckFacade();
+const healthFacade = new HealthFacade();
 
-describe("Health Check Tests [health-check.spec]", function () {
+describe("Health Check Tests [health.spec]", function () {
   it("[GET] /health", async function () {
     // add context information
     addContext(this, "Checking server status.");
 
     // perform operation
-    await healthCheckFacade.checkServerStatus();
+    await healthFacade.checkServerStatus();
   });
 
   it("[GET] /health/info", async function () {
@@ -17,6 +17,6 @@ describe("Health Check Tests [health-check.spec]", function () {
     addContext(this, "Checking app information.");
 
     // perform operation
-    await healthCheckFacade.checkInfo();
+    await healthFacade.checkInfo();
   });
 });

@@ -1,17 +1,19 @@
 import Config from "src/config/Config";
+import CustomError from "src/error/CustomError";
 import { AxiosServiceBuilder } from "src/util/AxiosService";
 
-class HealthCheckService {
-  private prefix: string;
+class HealthService {
+  private pathPrefix: string;
   constructor() {
-    this.prefix = "health";
+    this.pathPrefix = "health";
   }
 
   async checkServerStatus() {
     // prepare request
-    const url = `${Config.baseUrl}/${this.prefix}`;
+    const url = `${Config.baseUrl}/${this.pathPrefix}`;
     const method = "get";
 
+    // send request
     try {
       const axiosService = new AxiosServiceBuilder()
         .setUrl(url)
@@ -19,22 +21,17 @@ class HealthCheckService {
         .build();
       await axiosService.request();
     } catch (e: any) {
-      throw new Error(
-        `${
-          this.constructor.name
-        }.checkServerStatus:: Axios error: ${JSON.stringify(
-          e.response.data,
-          null,
-          2
-        )}`
-      );
+      const customError = new CustomError("Axios Error", this.constructor.name, "checkServerStatus", e);
+      await customError.throwError();
     }
   }
+
   async checkInfo() {
     // prepare request
-    const url = `${Config.baseUrl}/${this.prefix}/info`;
+    const url = `${Config.baseUrl}/${this.pathPrefix}/info`;
     const method = "get";
 
+    // send request
     try {
       const axiosService = new AxiosServiceBuilder()
         .setUrl(url)
@@ -43,17 +40,10 @@ class HealthCheckService {
       const response = await axiosService.request();
       return response;
     } catch (e: any) {
-      throw new Error(
-        `${
-          this.constructor.name
-        }.checkAppInformation:: Axios error: ${JSON.stringify(
-          e.response.data,
-          null,
-          2
-        )}`
-      );
+      const customError = new CustomError("Axios Error", this.constructor.name, "checkInfo", e);
+      await customError.throwError();
     }
   }
 }
 
-export default HealthCheckService;
+export default HealthService;

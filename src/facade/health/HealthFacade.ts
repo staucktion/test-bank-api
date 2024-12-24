@@ -1,16 +1,16 @@
-import HealthCheckService from "src/service/health/HealthCheckService";
+import HealthService from "src/service/health/HealthService";
 
-const healthCheckService = new HealthCheckService();
+const healthService = new HealthService();
 
-class HealthCheckFacade {
+class HealthFacade {
   async checkServerStatus() {
     // perform operation
-    await healthCheckService.checkServerStatus();
+    await healthService.checkServerStatus();
   }
 
   async checkInfo() {
     // perform operation
-    const response = await healthCheckService.checkInfo();
+    const response = await healthService.checkInfo();
 
 
     // todo check backend tarafında data.data yerine direkt olarak datayı dönmem lazım
@@ -23,4 +23,4 @@ class HealthCheckFacade {
   }
 }
 
-export default HealthCheckFacade;
+export default HealthFacade;
