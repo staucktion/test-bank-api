@@ -4,6 +4,7 @@ import { AxiosServiceBuilder } from "src/util/AxiosService";
 
 class HealthService {
   private pathPrefix: string;
+  
   constructor() {
     this.pathPrefix = "health";
   }
