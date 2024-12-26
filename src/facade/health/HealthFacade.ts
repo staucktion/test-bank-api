@@ -1,21 +1,26 @@
 import HealthService from "src/service/health/HealthService";
 import HealthValidation from "src/validation/health/HealthValidation";
 
-const healthService = new HealthService();
-const healthValidation = new HealthValidation();
-
 class HealthFacade {
+  private healthService: HealthService;
+  private healthValidation: HealthValidation;
+
+  constructor() {
+    this.healthService = new HealthService();
+    this.healthValidation = new HealthValidation();
+  }
+
   async checkServerStatus() {
     // perform operation
-    await healthService.checkServerStatus();
+    await this.healthService.checkServerStatus();
   }
 
   async checkInfo() {
     // perform operation
-    const response = await healthService.checkInfo();
+    const response = await this.healthService.checkInfo();
 
     // make validation
-    await healthValidation.checkInfo(response);
+    await this.healthValidation.checkInfo(response);
   }
 }
 
