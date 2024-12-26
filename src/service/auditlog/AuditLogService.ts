@@ -2,18 +2,17 @@ import Config from "src/config/Config";
 import CustomError from "src/error/CustomError";
 import AxiosService from "src/util/AxiosService";
 
-class BankService {
-  async getAccountFromCard(data) {
+class AuditLogService {
+  async getAuditLog() {
     // prepare request
-    const url = `${Config.baseUrl}/account`;
-    const method = "post";
+    const url = `${Config.baseUrl}/auditlog`;
+    const method = "get";
 
     // send request
     try {
       const response = await AxiosService.builder()
         .setUrl(url)
         .setMethod(method)
-        .setData(data)
         .build()
         .request();
       return response;
@@ -21,7 +20,7 @@ class BankService {
       CustomError.builder()
         .setErrorType("Axios Error")
         .setClassName(this.constructor.name)
-        .setMethodName("getAccountFromCard")
+        .setMethodName("auditGetAccountFromCard")
         .setError(error)
         .build()
         .throwError();
@@ -29,4 +28,4 @@ class BankService {
   }
 }
 
-export default BankService;
+export default AuditLogService;
