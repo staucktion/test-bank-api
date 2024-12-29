@@ -2,7 +2,7 @@
 
 ## 🔬 Automation Testing
 
-* Launch bank-api
+-   Launch bank-api
 
 Modify `.env` file for configurations.
 

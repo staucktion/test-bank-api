@@ -7,14 +7,14 @@ const auditLogFacade = new AuditLogFacade();
 before(async () => {});
 
 describe("Audit Log Tests [auditlog.spec]", function () {
-  it("[GET] /auditlogs", async function () {
-    // add context information
-    addContext(this, "Get audit logs for the account query.");
+	it("[GET] /auditlogs", async function () {
+		// add context information
+		addContext(this, "Get audit logs for the account query.");
 
-    // prepare data
-    const data = Config.card;
+		// prepare data
+		const data = Config.card;
 
-    // perform operation
-    await auditLogFacade.auditGetAccountFromCard(data);
-  });
+		// perform operation
+		await auditLogFacade.auditGetAccountFromCard(data);
+	});
 });
