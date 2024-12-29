@@ -12,9 +12,10 @@ describe("Audit Log Tests [auditlog.spec]", function () {
 		addContext(this, "Get audit logs for the account query.");
 
 		// prepare data
-		const data = Config.card;
+		const data = { ...Config.card, provision: 600 };
 
 		// perform operation
 		await auditLogFacade.auditGetAccountFromCard(data);
+		await auditLogFacade.addProvision(data);
 	});
 });

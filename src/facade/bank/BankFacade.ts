@@ -19,35 +19,32 @@ class BankFacade {
 		await this.bankValidation.getAccountFromCard(response);
 	}
 
-	async addprovision(data: any) {
-		let oldAccountInformation, newAccountInformation, provision;
+	async addProvision(data: any) {
+		let oldAccountInformation, newAccountInformation;
 
 		// sunny day scenario
 		oldAccountInformation = (await this.bankService.getAccountFromCard(data)).data;
-		provision = 500;
-		data = { ...data, provision };
-		if (+oldAccountInformation.balance > provision) {
+		if (+oldAccountInformation.balance > data.provision) {
 			// add provision
-			await this.bankService.addprovision(data);
+			await this.bankService.addProvision(data);
 
 			// query account information from card
 			newAccountInformation = (await this.bankService.getAccountFromCard(data)).data;
 
 			// validate
-			await this.bankValidation.validateAddProvision(oldAccountInformation, newAccountInformation, provision);
+			await this.bankValidation.validateAddProvision(oldAccountInformation, newAccountInformation, data.provision);
 		}
 
 		// scenario that when provision number is higher than balance
 		oldAccountInformation = (await this.bankService.getAccountFromCard(data)).data;
-		provision = 1000000000000;
-		data = { ...data, provision };
-		if (provision > +oldAccountInformation.balance) {
+		data = { ...data, provision: 100000000000 };
+		if (data.provision > +oldAccountInformation.balance) {
 			let hasError;
 
 			// try add provision
 			hasError = false;
 			try {
-				await this.bankService.addprovision(data);
+				await this.bankService.addProvision(data);
 				hasError = true;
 			} catch (error: any) {}
 
@@ -56,7 +53,7 @@ class BankFacade {
 
 			// validate
 			try {
-				await this.bankValidation.validateAddProvision(oldAccountInformation, newAccountInformation, provision);
+				await this.bankValidation.validateAddProvision(oldAccountInformation, newAccountInformation, data.provision);
 				hasError = true;
 			} catch (error: any) {}
 

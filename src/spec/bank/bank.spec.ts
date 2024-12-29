@@ -23,9 +23,9 @@ describe("Bank Tests [bank.spec]", function () {
 		addContext(this, "Make a provision.");
 
 		// prepare data
-		const data = Config.card;
+		const data = { ...Config.card, provision: 700 };
 
 		// perform operation
-		await bankFacade.addprovision(data);
+		await bankFacade.addProvision(data);
 	});
 });

@@ -23,7 +23,7 @@ class BankService {
 		}
 	}
 
-	async addprovision(data) {
+	async addProvision(data) {
 		// prepare request
 		const url = `${Config.baseUrl}/provisions/add`;
 		const method = "put";
