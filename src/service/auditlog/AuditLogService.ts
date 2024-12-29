@@ -5,7 +5,7 @@ import AxiosService from "src/util/AxiosService";
 class AuditLogService {
   async getAuditLog() {
     // prepare request
-    const url = `${Config.baseUrl}/auditlog`;
+    const url = `${Config.baseUrl}/auditlogs`;
     const method = "get";
 
     // send request

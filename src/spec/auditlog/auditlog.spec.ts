@@ -7,7 +7,7 @@ const auditLogFacade = new AuditLogFacade();
 before(async () => {});
 
 describe("Audit Log Tests [auditlog.spec]", function () {
-  it("[GET] /auditlog/", async function () {
+  it("[GET] /auditlogs", async function () {
     // add context information
     addContext(this, "Get audit logs for the account query.");
 

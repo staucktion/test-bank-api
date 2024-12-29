@@ -7,7 +7,7 @@ const bankFacade = new BankFacade();
 before(async () => {});
 
 describe("Bank Tests [bank.spec]", function () {
-  it("[POST] /account/", async function () {
+  it("[POST] /accounts", async function () {
     // add context information
     addContext(this, "Get account information from card details.");
 
@@ -16,5 +16,16 @@ describe("Bank Tests [bank.spec]", function () {
 
     // perform operation
     await bankFacade.getAccountFromCard(data);
+  });
+
+  it("[PUT] /provisions/add", async function () {
+    // add context information
+    addContext(this, "Make a provision.");
+
+    // prepare data
+    const data = Config.card;
+
+    // perform operation
+    await bankFacade.addprovision(data);
   });
 });
