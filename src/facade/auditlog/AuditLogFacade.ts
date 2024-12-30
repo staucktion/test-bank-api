@@ -37,6 +37,20 @@ class AuditLogFacade {
 		// make validation
 		await this.auditLogValidation.auditAddProvision(data, response);
 	}
+
+	async removeProvision(data: any) {
+		// add provision first
+		await this.bankService.addProvision(data);
+
+		// remove provision first
+		await this.bankService.removeProvision(data);
+
+		// query auditlogs
+		const response = await this.auditLogService.getAuditLog();
+
+		// make validation
+		await this.auditLogValidation.auditRemoveProvision(data, response);
+	}
 }
 
 export default AuditLogFacade;

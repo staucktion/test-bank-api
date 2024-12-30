@@ -74,6 +74,43 @@ class AuditLogValidation {
 				.build()
 				.throwError();
 	}
+
+	async auditRemoveProvision(data: any, response: any) {
+		// check data existence
+		if (!response || !response.data || response.data.length == 0) {
+			CustomError.builder()
+				.setErrorType("Validation Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("auditAddProvision")
+				.setMessage("audit log is not created.")
+				.build()
+				.throwError();
+		}
+
+		// get last
+		const lastRow = response.data[response.data.length - 1];
+
+		// check data field
+		if (!lastRow.id || !lastRow.action || !lastRow.performed_at) {
+			CustomError.builder()
+				.setErrorType("Validation Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("auditAddProvision")
+				.setMessage("audit log data field is not exist")
+				.build()
+				.throwError();
+		}
+
+		// compare provision log and provision data
+		if (lastRow.action !== `"${data.provision}" provision removed for the account with card number: "${data.cardNumber}".`)
+			CustomError.builder()
+				.setErrorType("Validation Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("auditAddProvision")
+				.setMessage("auditlog and query is not match")
+				.build()
+				.throwError();
+	}
 }
 
 export default AuditLogValidation;
