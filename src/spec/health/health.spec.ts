@@ -3,7 +3,7 @@ import HealthFacade from "src/facade/health/HealthFacade";
 
 const healthFacade = new HealthFacade();
 
-describe("Health Check Tests [health.spec]", function () {
+describe("Health Check Tests", function () {
 	it("[GET] /health", async function () {
 		// add context information
 		addContext(this, "Checking server status.");

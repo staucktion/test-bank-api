@@ -6,7 +6,7 @@ const bankFacade = new BankFacade();
 
 before(async () => {});
 
-describe("Bank Tests [bank.spec]", function () {
+describe("Bank Tests", function () {
 	it("[POST] /accounts", async function () {
 		// add context information
 		addContext(this, "Get account information from card details.");
