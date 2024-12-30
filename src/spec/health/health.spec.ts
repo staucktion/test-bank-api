@@ -4,19 +4,19 @@ import HealthFacade from "src/facade/health/HealthFacade";
 const healthFacade = new HealthFacade();
 
 describe("Health Check Tests [health.spec]", function () {
-  it("[GET] /health", async function () {
-    // add context information
-    addContext(this, "Checking server status.");
+	it("[GET] /health", async function () {
+		// add context information
+		addContext(this, "Checking server status.");
 
-    // perform operation
-    await healthFacade.checkServerStatus();
-  });
+		// perform operation
+		await healthFacade.checkServerStatus();
+	});
 
-  it("[GET] /health/info", async function () {
-    // add context information
-    addContext(this, "Checking app information.");
+	it("[GET] /health/info", async function () {
+		// add context information
+		addContext(this, "Checking app information.");
 
-    // perform operation
-    await healthFacade.checkInfo();
-  });
+		// perform operation
+		await healthFacade.checkInfo();
+	});
 });

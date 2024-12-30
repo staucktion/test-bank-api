@@ -1,26 +1,23 @@
 {
-  "name": "test-bank-api",
-  "version": "1.0.0",
-  "description": "Backend service automation test implementation with reporting.",
-  "author": "-",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test:parallel": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --parallel  --reporter mochawesome --require mochawesome/register --timeout 30000",
-    "test:parallel:clean": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --parallel  --reporter mochawesome --require mochawesome/register --timeout 30000 && npm run clean",
-    "test": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --reporter mochawesome --timeout 30000",
-    "spec:parallel": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*bank.spec.ts' --parallel --reporter mochawesome --require mochawesome/register --timeout 30000",
-    "spec": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*auditlog.spec.ts' --reporter mochawesome --timeout 30000"
-  },
-  "keywords": [],
-  "license": "ISC",
-  "dependencies": {
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.12.2",
-    "axios": "^1.6.8",
-    "dotenv": "^16.4.7",
-    "mocha": "^10.8.2",
-    "mochawesome": "^7.1.3",
-    "tsx": "^4.19.2"
-  }
+	"name": "test-bank-api",
+	"version": "1.0.0",
+	"description": "Backend service automation test implementation with reporting.",
+	"author": "-",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --reporter mochawesome --timeout 30000",
+		"spec": "cls && tsx ./node_modules/mocha/bin/_mocha '**/*bank.spec.ts' --reporter mochawesome --timeout 30000"
+	},
+	"keywords": [],
+	"license": "ISC",
+	"dependencies": {
+		"@types/mocha": "^10.0.6",
+		"@types/node": "^20.12.2",
+		"axios": "^1.6.8",
+		"dotenv": "^16.4.7",
+		"mocha": "^10.8.2",
+		"mochawesome": "^7.1.3",
+		"tsx": "^4.19.2"
+	}
 }

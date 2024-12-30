@@ -2,7 +2,7 @@
 
 ## 🔬 Automation Testing
 
-* Launch bank-api
+-   Launch bank-api
 
 Modify `.env` file for configurations.
 
@@ -12,31 +12,13 @@ Install dependencies
 npm i
 ```
 
-Run parallel tests and clean database
-
-```
-npm run test:parallel:clean
-```
-
-Run parallel tests
-
-```
-npm run test:parallel
-```
-
-Run sequential tests
+Run tests
 
 ```
 npm run test
 ```
 
-Run spec tests in parallel
-
-```
-npm run spec:parallel
-```
-
-Run spec tests in sequential
+Run spec tests
 
 ```
 npm run spec
