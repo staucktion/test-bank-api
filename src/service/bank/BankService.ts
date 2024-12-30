@@ -42,6 +42,26 @@ class BankService {
 				.throwError();
 		}
 	}
+
+	async removeProvision(data) {
+		// prepare request
+		const url = `${Config.baseUrl}/provisions/remove`;
+		const method = "put";
+
+		// send request
+		try {
+			const response = await AxiosService.builder().setUrl(url).setMethod(method).setData(data).build().request();
+			return response;
+		} catch (error: any) {
+			CustomError.builder()
+				.setErrorType("Axios Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("removeProvision")
+				.setError(error)
+				.build()
+				.throwError();
+		}
+	}
 }
 
 export default BankService;

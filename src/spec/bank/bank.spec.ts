@@ -28,4 +28,15 @@ describe("Bank Tests [bank.spec]", function () {
 		// perform operation
 		await bankFacade.addProvision(data);
 	});
+
+	it("[PUT] /provisions/remove", async function () {
+		// add context information
+		addContext(this, "Remove provision.");
+
+		// prepare data
+		const data = { ...Config.card, provision: 300 };
+
+		// perform operation
+		await bankFacade.removeProvision(data);
+	});
 });
