@@ -18,5 +18,6 @@ describe("Audit Log Tests", function () {
 		await auditLogFacade.auditGetAccountFromCard(data);
 		await auditLogFacade.addProvision(data);
 		await auditLogFacade.removeProvision(data);
+		await auditLogFacade.makeTransaction(data);
 	});
 });

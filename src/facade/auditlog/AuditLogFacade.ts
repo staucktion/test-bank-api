@@ -38,6 +38,30 @@ class AuditLogFacade {
 		);
 	}
 
+	async makeTransaction(data: any) {
+		// make transaction
+		await this.bankService.makeTransaction({
+			senderCardNumber: data.senderCard.cardNumber,
+			senderExpirationDate: data.senderCard.expirationDate,
+			senderCvv: data.senderCard.cvv,
+			targetCardNumber: data.targetCard.cardNumber,
+			amount: data.amount,
+		});
+
+		// query auditlogs
+		const response = await this.auditLogService.getAuditLog();
+
+		// make validation
+		await this.auditLogValidation.auditMakeTransaction(
+			{
+				senderCardNumber: data.senderCard.cardNumber,
+				targetCardNumber: data.targetCard.cardNumber,
+				amount: data.amount,
+			},
+			response
+		);
+	}
+
 	async addProvision(data: any) {
 		// add provision
 		await this.bankService.addProvision({

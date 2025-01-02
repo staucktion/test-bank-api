@@ -7,7 +7,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --reporter mochawesome --timeout 30000",
-		"spec": "tsx ./node_modules/mocha/bin/_mocha '**/*bank.spec.ts' --reporter mochawesome --timeout 30000"
+		"spec": "tsx ./node_modules/mocha/bin/_mocha '**/*auditlog.spec.ts' --reporter mochawesome --timeout 30000"
 	},
 	"keywords": [],
 	"license": "ISC",

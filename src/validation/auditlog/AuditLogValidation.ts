@@ -38,6 +38,46 @@ class AuditLogValidation {
 				.throwError();
 	}
 
+	async auditMakeTransaction(data: any, response: any) {
+		// check data existence
+		if (!response || !response.data || response.data.length == 0) {
+			CustomError.builder()
+				.setErrorType("Validation Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("auditMakeTransaction")
+				.setMessage("audit log is not created.")
+				.build()
+				.throwError();
+		}
+
+		// get last
+		const lastRow = response.data[response.data.length - 1];
+
+		// check data field
+		if (!lastRow.id || !lastRow.action || !lastRow.performed_at) {
+			CustomError.builder()
+				.setErrorType("Validation Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("auditMakeTransaction")
+				.setMessage("audit log data field is not exist")
+				.build()
+				.throwError();
+		}
+
+		// compare provision log and transaction data
+		if (
+			lastRow.action !==
+			`Transaction of amount "${data.amount}" completed from account with card number: "${data.senderCardNumber}" to account with card number: "${data.targetCardNumber}".`
+		)
+			CustomError.builder()
+				.setErrorType("Validation Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("auditMakeTransaction")
+				.setMessage("auditlog and query is not match")
+				.build()
+				.throwError();
+	}
+
 	async auditAddProvision(data: any, response: any) {
 		// check data existence
 		if (!response || !response.data || response.data.length == 0) {
@@ -100,9 +140,6 @@ class AuditLogValidation {
 				.build()
 				.throwError();
 		}
-
-		console.log(lastRow.action);
-		console.log(`"${data.provision}" provision removed for the account with card number: "${data.cardNumber}".`);
 
 		// compare provision log and provision data
 		if (lastRow.action !== `"${data.provision}" provision removed for the account with card number: "${data.cardNumber}".`)
