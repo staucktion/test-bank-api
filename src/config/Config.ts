@@ -1,12 +1,18 @@
-import EnvVairables from "src/env/EnvVariables";
+import EnvVariables from "src/env/EnvVariables";
 
 class Config {
-	static baseUrl = EnvVairables.baseUrl;
+	static baseUrl = EnvVariables.baseUrl;
 
 	static card = {
-		cardNumber: EnvVairables.cardNumber,
-		expirationDate: EnvVairables.cardExpirationDate,
-		cvv: EnvVairables.cardCvv,
+		cardNumber: EnvVariables.cardNumber,
+		expirationDate: EnvVariables.cardExpirationDate,
+		cvv: EnvVariables.cardCvv,
+	};
+
+	static targetCard = {
+		cardNumber: EnvVariables.targetCardNumber,
+		expirationDate: EnvVariables.targetCardExpirationDate,
+		cvv: EnvVariables.targetCardCvv,
 	};
 }
 

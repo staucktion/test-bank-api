@@ -98,6 +98,34 @@
 			"response": []
 		},
 		{
+			"name": "transactions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"senderCardNumber\": \"4242424242424242\",\r\n    \"senderExpirationDate\": \"12/25\",\r\n    \"senderCvv\": \"123\",\r\n    \"targetCardNumber\": \"4000056655665556\",\r\n    \"amount\": \"500\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "provisions/add",
 			"request": {
 				"method": "PUT",

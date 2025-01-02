@@ -7,7 +7,7 @@ const bankFacade = new BankFacade();
 before(async () => {});
 
 describe("Bank Tests", function () {
-	it("[POST] /accounts", async function () {
+	it("[BU1, BU3][POST] /accounts", async function () {
 		// add context information
 		addContext(this, "Get account information from card details.");
 
@@ -18,7 +18,18 @@ describe("Bank Tests", function () {
 		await bankFacade.getAccountFromCard(data);
 	});
 
-	it("[PUT] /provisions/add", async function () {
+	it("[BU2, BU3][POST] /transactions", async function () {
+		// add context information
+		addContext(this, "Make a transaction.");
+
+		// prepare data
+		const data = { senderCard: Config.card, targetCard: Config.targetCard, amount: 500 };
+
+		// perform operation
+		await bankFacade.makeTransaction(data);
+	});
+
+	it("[BU3, BU4][PUT] /provisions/add", async function () {
 		// add context information
 		addContext(this, "Make a provision.");
 
@@ -29,7 +40,7 @@ describe("Bank Tests", function () {
 		await bankFacade.addProvision(data);
 	});
 
-	it("[PUT] /provisions/remove", async function () {
+	it("[BU3, BU4][PUT] /provisions/remove", async function () {
 		// add context information
 		addContext(this, "Remove provision.");
 

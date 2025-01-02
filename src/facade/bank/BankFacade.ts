@@ -1,3 +1,4 @@
+import Config from "src/config/Config";
 import CustomError from "src/error/CustomError";
 import BankService from "src/service/bank/BankService";
 import BankValidation from "src/validation/bank/BankValidation";
@@ -17,6 +18,120 @@ class BankFacade {
 
 		// make validation
 		await this.bankValidation.getAccountFromCard(response);
+	}
+
+	async makeTransaction(data: any) {
+		let senderOldAccountInformation, senderNewAccountInformation;
+		let targetOldAccountInformation, targetNewAccountInformation;
+
+		// sunny day scenario
+		senderOldAccountInformation = (
+			await this.bankService.getAccountFromCard({
+				cardNumber: data.senderCard.cardNumber,
+				expirationDate: data.senderCard.expirationDate,
+				cvv: data.senderCard.cvv,
+			})
+		).data;
+		targetOldAccountInformation = (
+			await this.bankService.getAccountFromCard({
+				cardNumber: data.targetCard.cardNumber,
+				expirationDate: data.targetCard.expirationDate,
+				cvv: data.targetCard.cvv,
+			})
+		).data;
+
+		if (+senderOldAccountInformation.balance >= data.amount) {
+			// make transaction
+			await this.bankService.makeTransaction({
+				senderCardNumber: data.senderCard.cardNumber,
+				senderExpirationDate: data.senderCard.expirationDate,
+				senderCvv: data.senderCard.cvv,
+				targetCardNumber: data.targetCard.cardNumber,
+				amount: data.amount,
+			});
+
+			// query account information from card
+			senderNewAccountInformation = (
+				await this.bankService.getAccountFromCard({
+					cardNumber: data.senderCard.cardNumber,
+					expirationDate: data.senderCard.expirationDate,
+					cvv: data.senderCard.cvv,
+				})
+			).data;
+			targetNewAccountInformation = (
+				await this.bankService.getAccountFromCard({
+					cardNumber: data.targetCard.cardNumber,
+					expirationDate: data.targetCard.expirationDate,
+					cvv: data.targetCard.cvv,
+				})
+			).data;
+
+			// validate
+			await this.bankValidation.validateMakeTransaction(
+				senderOldAccountInformation,
+				senderNewAccountInformation,
+				targetOldAccountInformation,
+				targetNewAccountInformation,
+				data.amount
+			);
+		}
+
+		// scenario that when balance is not sufficient for make transaction
+		senderOldAccountInformation = (
+			await this.bankService.getAccountFromCard({
+				cardNumber: data.senderCard.cardNumber,
+				expirationDate: data.senderCard.expirationDate,
+				cvv: data.senderCard.cvv,
+			})
+		).data;
+		data = { ...data, amount: 100000000000 };
+		if (data.amount > +senderOldAccountInformation.balance) {
+			let hasError;
+
+			// try make transaction
+			hasError = false;
+			try {
+				await this.bankService.makeTransaction({
+					senderCardNumber: data.senderCard.cardNumber,
+					senderExpirationDate: data.senderCard.expirationDate,
+					senderCvv: data.senderCard.cvv,
+					targetCardNumber: data.targetCard.cardNumber,
+					amount: data.amount,
+				});
+				hasError = true;
+			} catch (error: any) {}
+
+			// query account information from card
+			senderNewAccountInformation = (
+				await this.bankService.getAccountFromCard({
+					cardNumber: data.senderCard.cardNumber,
+					expirationDate: data.senderCard.expirationDate,
+					cvv: data.senderCard.cvv,
+				})
+			).data;
+
+			// validate
+			try {
+				// validate
+				await this.bankValidation.validateMakeTransaction(
+					senderOldAccountInformation,
+					senderNewAccountInformation,
+					targetOldAccountInformation,
+					targetNewAccountInformation,
+					data.amount
+				);
+				hasError = true;
+			} catch (error: any) {}
+
+			if (hasError)
+				CustomError.builder()
+					.setErrorType("Validation Error")
+					.setClassName(this.constructor.name)
+					.setMethodName("makeTransaction")
+					.setMessage("transaction shouldn't be done as it is higher than balance")
+					.build()
+					.throwError();
+		}
 	}
 
 	async addProvision(data: any) {

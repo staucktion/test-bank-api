@@ -14,6 +14,40 @@ class BankValidation {
 		}
 	}
 
+	async validateMakeTransaction(
+		senderOldAccountInformation: any,
+		senderNewAccountInformation: any,
+		targetOldAccountInformation: any,
+		targetNewAccountInformation: any,
+		amount: number
+	) {
+		// cast type
+		const senderOldBalance = +senderOldAccountInformation.balance;
+		const senderNewBalance = +senderNewAccountInformation.balance;
+		const targetOldBalance = +targetOldAccountInformation.balance;
+		const targetNewBalance = +targetNewAccountInformation.balance;
+
+		// check new balance of sender
+		if (senderOldBalance - amount != senderNewBalance)
+			CustomError.builder()
+				.setErrorType("Validation Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("validateMakeTransaction")
+				.setMessage("after make transaction sender new balance is not updated as expected")
+				.build()
+				.throwError();
+
+		// check new balance of target
+		if (targetOldBalance + amount != targetNewBalance)
+			CustomError.builder()
+				.setErrorType("Validation Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("validateMakeTransaction")
+				.setMessage("after make transaction target new balance is not updated as expected")
+				.build()
+				.throwError();
+	}
+
 	async validateAddProvision(oldAccountInformation: any, newAccountInformation: any, provision: any) {
 		// cast type
 		const oldBalance = +oldAccountInformation.balance;
