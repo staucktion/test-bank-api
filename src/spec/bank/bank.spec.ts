@@ -12,7 +12,7 @@ describe("Bank Tests", function () {
 		addContext(this, "Get account information from card details.");
 
 		// prepare data
-		const data = Config.card;
+		const data = Config.senderCard;
 
 		// perform operation
 		await bankFacade.getAccountFromCard(data);
@@ -23,7 +23,7 @@ describe("Bank Tests", function () {
 		addContext(this, "Make a transaction.");
 
 		// prepare data
-		const data = { senderCard: Config.card, targetCard: Config.targetCard, amount: 500 };
+		const data = { senderCard: Config.senderCard, targetCard: Config.targetCard, amount: 500 };
 
 		// perform operation
 		await bankFacade.makeTransaction(data);
@@ -34,7 +34,7 @@ describe("Bank Tests", function () {
 		addContext(this, "Make a provision.");
 
 		// prepare data
-		const data = { ...Config.card, provision: 700 };
+		const data = { ...Config.senderCard, provision: 700 };
 
 		// perform operation
 		await bankFacade.addProvision(data);
@@ -45,7 +45,7 @@ describe("Bank Tests", function () {
 		addContext(this, "Remove provision.");
 
 		// prepare data
-		const data = { ...Config.card, provision: 300 };
+		const data = { ...Config.senderCard, provision: 300 };
 
 		// perform operation
 		await bankFacade.removeProvision(data);

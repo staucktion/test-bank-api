@@ -3,10 +3,10 @@ import EnvVariables from "src/env/EnvVariables";
 class Config {
 	static baseUrl = EnvVariables.baseUrl;
 
-	static card = {
-		cardNumber: EnvVariables.cardNumber,
-		expirationDate: EnvVariables.cardExpirationDate,
-		cvv: EnvVariables.cardCvv,
+	static senderCard = {
+		cardNumber: EnvVariables.senderCardNumber,
+		expirationDate: EnvVariables.senderCardExpirationDate,
+		cvv: EnvVariables.senderCardCvv,
 	};
 
 	static targetCard = {
