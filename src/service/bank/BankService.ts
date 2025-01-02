@@ -23,6 +23,26 @@ class BankService {
 		}
 	}
 
+	async makeTransaction(data) {
+		// prepare request
+		const url = `${Config.baseUrl}/transactions`;
+		const method = "post";
+
+		// send request
+		try {
+			const response = await AxiosService.builder().setUrl(url).setMethod(method).setData(data).build().request();
+			return response;
+		} catch (error: any) {
+			CustomError.builder()
+				.setErrorType("Axios Error")
+				.setClassName(this.constructor.name)
+				.setMethodName("makeTransaction")
+				.setError(error)
+				.build()
+				.throwError();
+		}
+	}
+
 	async addProvision(data) {
 		// prepare request
 		const url = `${Config.baseUrl}/provisions/add`;
