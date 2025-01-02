@@ -12,7 +12,7 @@ describe("Audit Log Tests", function () {
 		addContext(this, "Get audit logs for the account query.");
 
 		// prepare data
-		const data = { senderCard: Config.senderCard, targetCard: Config.targetCard, provision: 800, amount: 100 };
+		const data = { senderCard: Config.senderCard, targetCard: Config.targetCard, provision: 800, amount: 1000 };
 
 		// perform operation
 		await auditLogFacade.auditGetAccountFromCard(data);
