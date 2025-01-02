@@ -95,18 +95,21 @@ class AuditLogValidation {
 			CustomError.builder()
 				.setErrorType("Validation Error")
 				.setClassName(this.constructor.name)
-				.setMethodName("auditAddProvision")
+				.setMethodName("auditRemoveProvision")
 				.setMessage("audit log data field is not exist")
 				.build()
 				.throwError();
 		}
+
+		console.log(lastRow.action);
+		console.log(`"${data.provision}" provision removed for the account with card number: "${data.cardNumber}".`);
 
 		// compare provision log and provision data
 		if (lastRow.action !== `"${data.provision}" provision removed for the account with card number: "${data.cardNumber}".`)
 			CustomError.builder()
 				.setErrorType("Validation Error")
 				.setClassName(this.constructor.name)
-				.setMethodName("auditAddProvision")
+				.setMethodName("auditRemoveProvision")
 				.setMessage("auditlog and query is not match")
 				.build()
 				.throwError();
