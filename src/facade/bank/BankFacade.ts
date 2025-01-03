@@ -48,6 +48,7 @@ class BankFacade {
 				senderCvv: data.senderCard.cvv,
 				targetCardNumber: data.targetCard.cardNumber,
 				amount: data.amount,
+				description: data.description,
 			});
 
 			// query account information from card
@@ -97,6 +98,7 @@ class BankFacade {
 					senderCvv: data.senderCard.cvv,
 					targetCardNumber: data.targetCard.cardNumber,
 					amount: data.amount,
+					description: data.description,
 				});
 				hasError = true;
 			} catch (error: any) {}
@@ -112,7 +114,6 @@ class BankFacade {
 
 			// validate
 			try {
-				// validate
 				await this.bankValidation.validateMakeTransaction(
 					senderOldAccountInformation,
 					senderNewAccountInformation,

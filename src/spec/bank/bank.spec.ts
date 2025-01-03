@@ -23,7 +23,7 @@ describe("Bank Tests", function () {
 		addContext(this, "Make a transaction.");
 
 		// prepare data
-		const data = { senderCard: Config.senderCard, targetCard: Config.targetCard, amount: 500 };
+		const data = { senderCard: Config.senderCard, targetCard: Config.targetCard, amount: 500, description: "automation test description" };
 
 		// perform operation
 		await bankFacade.makeTransaction(data);

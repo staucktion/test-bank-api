@@ -46,6 +46,7 @@ class AuditLogFacade {
 			senderCvv: data.senderCard.cvv,
 			targetCardNumber: data.targetCard.cardNumber,
 			amount: data.amount,
+			description: data.description,
 		});
 
 		// query auditlogs
