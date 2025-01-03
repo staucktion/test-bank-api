@@ -104,7 +104,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"senderCardNumber\": \"4242424242424242\",\r\n    \"senderExpirationDate\": \"12/25\",\r\n    \"senderCvv\": \"123\",\r\n    \"targetCardNumber\": \"4000056655665556\",\r\n    \"amount\": \"500\"\r\n}",
+					"raw": "{\r\n    \"senderCardNumber\": \"4242424242424242\",\r\n    \"senderExpirationDate\": \"12/25\",\r\n    \"senderCvv\": \"123\",\r\n    \"targetCardNumber\": \"4000056655665556\",\r\n    \"amount\": \"500\",\r\n    \"description\": \"manuel test transaction\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
