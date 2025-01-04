@@ -4,21 +4,21 @@
 
 -   Launch bank-api
 
-Modify `.env` file for configurations.
+-   According to mode: Rename `.env.prod.example` or `.env.dev.example` as `.env` with proper configurations.
 
-Install dependencies
+-   Install dependencies
 
 ```
 npm i
 ```
 
-Run tests
+-   Run tests
 
 ```
 npm run test
 ```
 
-Run spec tests
+-   Run spec tests
 
 ```
 npm run spec
