@@ -1,3 +1,5 @@
+import Config from "src/config/Config";
+import CustomError from "src/error/CustomError";
 import HealthService from "src/service/health/HealthService";
 import HealthValidation from "src/validation/health/HealthValidation";
 
@@ -12,15 +14,29 @@ class HealthFacade {
 
 	async checkServerStatus() {
 		// perform operation
-		await this.healthService.checkServerStatus();
+		try {
+			await this.healthService.checkServerStatus();
+		} catch (error: any) {
+			if (error instanceof CustomError) {
+				if (Config.explicitErrorLog) error.log();
+				error.throwError();
+			}
+		}
 	}
 
 	async checkInfo() {
-		// perform operation
-		const response = await this.healthService.checkInfo();
+		try {
+			// perform operation
+			const response = await this.healthService.checkInfo();
 
-		// make validation
-		await this.healthValidation.checkInfo(response);
+			// make validation
+			await this.healthValidation.checkInfo(response);
+		} catch (error: any) {
+			if (error instanceof CustomError) {
+				if (Config.explicitErrorLog) error.log();
+				error.throwError();
+			}
+		}
 	}
 }
 

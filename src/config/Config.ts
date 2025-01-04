@@ -3,6 +3,8 @@ import EnvVariables from "src/env/EnvVariables";
 class Config {
 	static baseUrl = EnvVariables.baseUrl;
 
+	static explicitErrorLog = EnvVariables.explicitErrorLog;
+
 	static senderCard = {
 		cardNumber: EnvVariables.senderCardNumber,
 		expirationDate: EnvVariables.senderCardExpirationDate,

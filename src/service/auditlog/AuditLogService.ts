@@ -13,13 +13,9 @@ class AuditLogService {
 			const response = await AxiosService.builder().setUrl(url).setMethod(method).build().request();
 			return response;
 		} catch (error: any) {
-			CustomError.builder()
-				.setErrorType("Axios Error")
-				.setClassName(this.constructor.name)
-				.setMethodName("auditGetAccountFromCard")
-				.setError(error)
-				.build()
-				.throwError();
+			let status;
+			if (error?.response?.status) status = error.response.status;
+			CustomError.builder().setStatusCode(status).setErrorType("Axios Error").setMessage("Axios error.").build().throwError();
 		}
 	}
 }
