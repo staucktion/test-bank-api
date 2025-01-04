@@ -1,13 +1,21 @@
-import envVariables from "src/env/EnvVariables";
+import EnvVariables from "src/env/EnvVariables";
 
 class Config {
-  static baseUrl = envVariables.baseUrl;
-  static preKey = envVariables.preKey;
+	static baseUrl = EnvVariables.baseUrl;
 
-  static admin = {
-    email: envVariables.adminEmail,
-    password: envVariables.adminPassword,
-  };
+	static explicitErrorLog = EnvVariables.explicitErrorLog;
+
+	static senderCard = {
+		cardNumber: EnvVariables.senderCardNumber,
+		expirationDate: EnvVariables.senderCardExpirationDate,
+		cvv: EnvVariables.senderCardCvv,
+	};
+
+	static targetCard = {
+		cardNumber: EnvVariables.targetCardNumber,
+		expirationDate: EnvVariables.targetCardExpirationDate,
+		cvv: EnvVariables.targetCardCvv,
+	};
 }
 
 export default Config;

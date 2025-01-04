@@ -1,64 +1,58 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 class AxiosService {
-  private url?: string;
-  private method?: string;
-  private data?: object;
-  private config?: object;
+	private readonly config: AxiosRequestConfig;
 
-  constructor(builder: AxiosServiceBuilder) {
-    this.url = builder.url;
-    this.method = builder.method;
-    this.data = builder.data;
-    this.configureRequest();
-  }
+	private constructor(config: AxiosRequestConfig) {
+		this.config = {
+			...config,
+			headers: {
+				"Content-Type": "application/json",
+				...config.headers,
+			},
+		};
+	}
 
-  private configureRequest() {
-    this.config = {
-      url: this.url,
-      method: this.method,
-      data: this.data,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-  }
+	public static builder() {
+		return new this.Builder();
+	}
 
-  public displayProperties(): void {
-    console.log("Axios Properties:");
-    console.log(this.config);
-  }
+	public displayProperties(): void {
+		console.log("Axios Config:", this.config);
+	}
 
-  public async request() {
-    return await axios.request(this.config);
-  }
+	public async request(): Promise<AxiosResponse> {
+		return await axios.request(this.config);
+	}
+
+	// nested builder class
+	private static Builder = class {
+		private config: AxiosRequestConfig = {};
+
+		public setUrl(url: string): this {
+			this.config.url = url;
+			return this;
+		}
+
+		public setMethod(method: string): this {
+			this.config.method = method;
+			return this;
+		}
+
+		public setData(data: object): this {
+			this.config.data = data;
+			return this;
+		}
+
+		public setHeaders(headers: object): this {
+			this.config.headers = { ...this.config.headers, ...headers };
+			return this;
+		}
+
+		public build(): AxiosService {
+			return new AxiosService(this.config);
+		}
+	};
 }
 
-class AxiosServiceBuilder {
-  public url?: string;
-  public method?: string;
-  public data?: object;
-
-  constructor() {}
-
-  public setUrl(url: string): AxiosServiceBuilder {
-    this.url = url;
-    return this;
-  }
-
-  public setMethod(method: string): AxiosServiceBuilder {
-    this.method = method;
-    return this;
-  }
-
-  public setData(data: object): AxiosServiceBuilder {
-    this.data = data;
-    return this;
-  }
-
-  public build(): AxiosService {
-    return new AxiosService(this);
-  }
-}
-
-export { AxiosService, AxiosServiceBuilder };
+export default AxiosService;

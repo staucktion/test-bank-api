@@ -1,0 +1,11 @@
+./.git
+./mochawesome-report
+./node_modules
+./postman-request
+./.dockerignore
+./.editorconfig
+./.env.dev.example
+./.env.prod.example
+./.gitignore
+./Dockerfile
+./README.md
