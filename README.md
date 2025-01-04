@@ -4,25 +4,25 @@
 
 ## 🔬 Automation Testing
 
--   Initialize and clean database. Check (`database-initializer`)[https://github.com/staucktion/database-initializer] repository.
+- Initialize and clean database. Check [`database-initializer`](https://github.com/staucktion/database-initializer) repository.
 
--   Launch bank-api. Check (`bank-api`)[https://github.com/staucktion/bank-api] repository.
+- Launch bank-api. Check [`bank-api`](https://github.com/staucktion/bank-api) repository.
 
--   According to mode: Rename `.env.prod.example` or `.env.dev.example` as `.env` with proper configurations.
+- According to mode: Rename `.env.prod.example` or `.env.dev.example` as `.env` with proper configurations.
 
--   Install dependencies.
+- Install dependencies.
 
 ```
 npm i
 ```
 
--   Run tests
+- Run tests
 
 ```
 npm run test
 ```
 
--   Run spec tests
+- Run spec tests
 
 ```
 npm run spec
