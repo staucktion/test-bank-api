@@ -1,5 +1,7 @@
 <h1 id="top" align="center">Test Bank API </h1>
 
+<br/>
+
 ## 🔬 Automation Testing
 
 -   Initialize and clean database. Check (`database-initializer`)[https://github.com/staucktion/database-initializer] repository.
