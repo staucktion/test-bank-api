@@ -2,11 +2,13 @@
 
 ## 🔬 Automation Testing
 
--   Launch bank-api
+-   Initialize and clean database. Check (`database-initializer`)[https://github.com/staucktion/database-initializer] repository.
+
+-   Launch bank-api. Check (`bank-api`)[https://github.com/staucktion/bank-api] repository.
 
 -   According to mode: Rename `.env.prod.example` or `.env.dev.example` as `.env` with proper configurations.
 
--   Install dependencies
+-   Install dependencies.
 
 ```
 npm i
