@@ -18,13 +18,7 @@ class HealthService {
 		try {
 			await AxiosService.builder().setUrl(url).setMethod(method).build().request();
 		} catch (error: any) {
-			CustomError.builder()
-				.setErrorType("Axios Error")
-				.setClassName(this.constructor.name)
-				.setMethodName("checkServerStatus")
-				.setError(error)
-				.build()
-				.throwError();
+			CustomError.builder().setErrorType("Axios Error").setStatusCode(error.statusCode).setMessage("Axios cannot perfrom http request.").setExternalMessage(error.message).build().throwError();
 		}
 	}
 
@@ -38,13 +32,7 @@ class HealthService {
 			const response = await AxiosService.builder().setUrl(url).setMethod(method).build().request();
 			return response;
 		} catch (error: any) {
-			CustomError.builder()
-				.setErrorType("Axios Error")
-				.setClassName(this.constructor.name)
-				.setMethodName("checkInfo")
-				.setError(error)
-				.build()
-				.throwError();
+			CustomError.builder().setErrorType("Axios Error").setStatusCode(error.statusCode).setMessage("Axios cannot perfrom http request.").setExternalMessage(error.message).build().throwError();
 		}
 	}
 }

@@ -13,13 +13,9 @@ class BankService {
 			const response = await AxiosService.builder().setUrl(url).setMethod(method).setData(data).build().request();
 			return response;
 		} catch (error: any) {
-			CustomError.builder()
-				.setErrorType("Axios Error")
-				.setClassName(this.constructor.name)
-				.setMethodName("getAccountFromCard")
-				.setError(error)
-				.build()
-				.throwError();
+			let status;
+			if (error?.response?.status) status = error.response.status;
+			CustomError.builder().setStatusCode(status).setErrorType("Axios Error").setMessage("Axios error.").build().throwError();
 		}
 	}
 
@@ -33,13 +29,9 @@ class BankService {
 			const response = await AxiosService.builder().setUrl(url).setMethod(method).setData(data).build().request();
 			return response;
 		} catch (error: any) {
-			CustomError.builder()
-				.setErrorType("Axios Error")
-				.setClassName(this.constructor.name)
-				.setMethodName("makeTransaction")
-				.setError(error)
-				.build()
-				.throwError();
+			let status;
+			if (error?.response?.status) status = error.response.status;
+			CustomError.builder().setStatusCode(status).setErrorType("Axios Error").setMessage("Axios error.").build().throwError();
 		}
 	}
 
@@ -53,13 +45,9 @@ class BankService {
 			const response = await AxiosService.builder().setUrl(url).setMethod(method).setData(data).build().request();
 			return response;
 		} catch (error: any) {
-			CustomError.builder()
-				.setErrorType("Axios Error")
-				.setClassName(this.constructor.name)
-				.setMethodName("addprovision")
-				.setError(error)
-				.build()
-				.throwError();
+			let status;
+			if (error?.response?.status) status = error.response.status;
+			CustomError.builder().setStatusCode(status).setErrorType("Axios Error").setMessage("Axios error.").build().throwError();
 		}
 	}
 
@@ -73,13 +61,9 @@ class BankService {
 			const response = await AxiosService.builder().setUrl(url).setMethod(method).setData(data).build().request();
 			return response;
 		} catch (error: any) {
-			CustomError.builder()
-				.setErrorType("Axios Error")
-				.setClassName(this.constructor.name)
-				.setMethodName("removeProvision")
-				.setError(error)
-				.build()
-				.throwError();
+			let status;
+			if (error?.response?.status) status = error.response.status;
+			CustomError.builder().setStatusCode(status).setErrorType("Axios Error").setMessage("Axios error.").build().throwError();
 		}
 	}
 }
