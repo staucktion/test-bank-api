@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f79c3282-7103-405d-b2f4-fc4675957aa9",
+		"_postman_id": "e8ac85e5-3b9a-42c7-9c17-1019575fa7af",
 		"name": "stocktion-bank-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26266539"
@@ -15,12 +15,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/health",
-							"protocol": "http",
+							"raw": "{{BASE_URL}}/health",
 							"host": [
-								"localhost"
+								"{{BASE_URL}}"
 							],
-							"port": "8081",
 							"path": [
 								"health"
 							]
@@ -34,12 +32,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/health/info",
-							"protocol": "http",
+							"raw": "{{BASE_URL}}/health/info",
 							"host": [
-								"localhost"
+								"{{BASE_URL}}"
 							],
-							"port": "8081",
 							"path": [
 								"health",
 								"info"
@@ -65,12 +61,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8081/accounts",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/accounts",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "8081",
 					"path": [
 						"accounts"
 					]
@@ -84,12 +78,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/auditlogs",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/auditlogs",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "8081",
 					"path": [
 						"auditlogs"
 					]
@@ -112,12 +104,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8081/transactions",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/transactions",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "8081",
 					"path": [
 						"transactions"
 					]
@@ -140,12 +130,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8081/provisions/add",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/provisions/add",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "8081",
 					"path": [
 						"provisions",
 						"add"
@@ -169,12 +157,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8081/provisions/remove",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/provisions/remove",
 					"host": [
-						"localhost"
+						"{{BASE_URL}}"
 					],
-					"port": "8081",
 					"path": [
 						"provisions",
 						"remove"
@@ -182,6 +168,35 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8001",
+			"type": "string"
 		}
 	]
 }
