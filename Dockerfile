@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 80
 
-CMD ["npm", "run", "test"]
+CMD ["npm", "run", "prod:test"]
