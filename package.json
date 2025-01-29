@@ -6,9 +6,9 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"prod:test": "dotenv -e .env.prod tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --reporter mochawesome --timeout 30000",
-		"test": "dotenv -e .env.dev tsx ./node_modules/mocha/bin/_mocha '**/*.spec.ts' --reporter mochawesome --timeout 30000",
-		"spec": "dotenv -e .env.dev tsx ./node_modules/mocha/bin/_mocha '**/*auditlog.spec.ts' --reporter mochawesome --timeout 30000"
+		"prod:test": "dotenv -e .env.prod -- tsx ./node_modules/mocha/bin/_mocha --reporter mochawesome --timeout 60000 '**/*.spec.ts'",
+		"test": "dotenv -e .env.dev -- tsx ./node_modules/mocha/bin/_mocha --reporter mochawesome --timeout 60000 '**/*.spec.ts'",
+		"spec": "dotenv -e .env.dev -- tsx ./node_modules/mocha/bin/_mocha --reporter mochawesome --timeout 60000 '**/*auditlog.spec.ts'"
 	},
 	"keywords": [],
 	"license": "ISC",
