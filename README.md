@@ -12,6 +12,8 @@
 
 - Rename `.env.prod.example` as `.env.prod` with proper configuration.
 
+### Development Mode
+
 - Install dependencies.
 
 ```
@@ -29,6 +31,10 @@ npm run test
 ```
 npm run spec
 ```
+
+### Production mode
+
+- Refer system startup commands for production launch. Check [`docker-config`](https://github.com/staucktion/docker-config) repository.
 
 <br/>
 
