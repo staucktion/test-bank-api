@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import https from "https";
 
 class AxiosService {
 	private readonly config: AxiosRequestConfig;
@@ -10,6 +11,9 @@ class AxiosService {
 				"Content-Type": "application/json",
 				...config.headers,
 			},
+			httpsAgent: new https.Agent({
+				rejectUnauthorized: false,
+			}),
 		};
 	}
 

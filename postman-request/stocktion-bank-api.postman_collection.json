@@ -53,7 +53,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cardNumber\": \"4242424242424242\",\r\n    \"expirationDate\": \"12/25\",\r\n    \"cvv\": \"123\"\r\n}",
+					"raw": "{\r\n    \"cardNumber\": \"1234567890123456\",\r\n    \"expirationDate\": \"12/34\",\r\n    \"cvv\": \"123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -96,7 +96,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"senderCardNumber\": \"4242424242424242\",\r\n    \"senderExpirationDate\": \"12/25\",\r\n    \"senderCvv\": \"123\",\r\n    \"targetCardNumber\": \"4000056655665556\",\r\n    \"amount\": \"500\",\r\n    \"description\": \"manuel test transaction\"\r\n}",
+					"raw": "{\r\n    \"senderCardNumber\": \"1234567890123456\",\r\n    \"senderExpirationDate\": \"12/34\",\r\n    \"senderCvv\": \"123\",\r\n    \"targetCardNumber\": \"4539187690234512\",\r\n    \"amount\": \"500\",\r\n    \"description\": \"manuel test transaction\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -122,7 +122,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cardNumber\": \"4242424242424242\",\r\n    \"expirationDate\": \"12/25\",\r\n    \"cvv\": \"123\",\r\n    \"provision\" : 500.00\r\n}",
+					"raw": "{\r\n    \"cardNumber\": \"1234567890123456\",\r\n    \"expirationDate\": \"12/34\",\r\n    \"cvv\": \"123\",\r\n    \"provision\" : 500.00\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -149,7 +149,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cardNumber\": \"4242424242424242\",\r\n    \"expirationDate\": \"12/25\",\r\n    \"cvv\": \"123\",\r\n    \"provision\": 500.00\r\n}",
+					"raw": "{\r\n    \"cardNumber\": \"1234567890123456\",\r\n    \"expirationDate\": \"12/34\",\r\n    \"cvv\": \"123\",\r\n    \"provision\": 500.00\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -195,7 +195,7 @@
 	"variable": [
 		{
 			"key": "BASE_URL",
-			"value": "http://localhost:8001",
+			"value": "https://st.local.net/bank-api",
 			"type": "string"
 		}
 	]
